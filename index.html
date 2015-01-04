@@ -24,13 +24,10 @@
 
 				<div class="col-sm-10">
 
-					<div s3 options="options" files="form.files"></div>
+					<div s3 options="options" ng-model="form.files"></div>
 
-					<div ng-messages="testForm.inputEmail.$error" ng-show="testForm.inputEmail.$dirty || regForm.$submitted">
-						<div class="alert alert-danger" ng-message="required">Это поле обязательно для заполнения.</div>
-						<div class="alert alert-danger" ng-message="email">Емайл введен не правильно.</div>
-						<div class="alert alert-warning" ng-message="looking">Проверяю в базе даных...</div>
-						<div class="alert alert-danger" ng-message="available">Такое имя пользователя уже занято.</div>
+					<div ng-messages="testForm.upload.$error" ng-show="testForm.inputEmail.$dirty || regForm.$submitted">
+						<div class="alert alert-danger" ng-message="upload">Ля ля.</div>
 					</div>
 
 				</div>
@@ -62,6 +59,10 @@
 			filesize:   '10000000',
 			region:   '10000000',
 			limit:   '1',
+			cb_error: function(msg) {
+			alert(msg);
+
+			},
 			replace:   true,
 			policy:     {
 				"policy":    "eyJleHBpcmF0aW9uIjoiMjAxNi0wNS0xOFQxNjo0OToyNFoiLCJjb25kaXRpb25zIjpbeyJidWNrZXQiOiJwcml2YXRlLWNkbi1jaCJ9LFsic3RhcnRzLXdpdGgiLCIka2V5IiwiIl0seyJhY2wiOiJwdWJsaWMtcmVhZCJ9LFsiY29udGVudC1sZW5ndGgtcmFuZ2UiLDAsMTA0ODU3NjBdLFsic3RhcnRzLXdpdGgiLCIkQ29udGVudC1UeXBlIiwiIl1dfQ==",
