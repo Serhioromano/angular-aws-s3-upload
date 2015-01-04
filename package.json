@@ -1,0 +1,22 @@
+{
+  "name": "angular-aws-s3-upload",
+  "version": "1.0.0",
+  "description": "Angular AWS uploader directive",
+  "main": "angular-s3.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Serhioromano/angular-aws-s3-upload.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Serhioromano/angular-aws-s3-upload/issues"
+  },
+  "homepage": "https://github.com/Serhioromano/angular-aws-s3-upload",
+  "devDependencies": {
+    "aws-sdk": "^2.1.4"
+  }
+}

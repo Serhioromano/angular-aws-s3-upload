@@ -1,0 +1,31 @@
+{
+  "name": "angular-aws-s3-upload",
+  "version": "1.0.0",
+  "homepage": "https://github.com/Serhioromano/angular-aws-s3-upload",
+  "authors": [
+    "Serhioromano <serg4172@mail.ru>"
+  ],
+  "description": "AWS S3 uploader",
+  "main": "angular-s3.min.js",
+  "moduleType": [
+    "globals"
+  ],
+  "keywords": [
+    "Angular",
+    "AWS",
+    "S3",
+    "Amazon"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "~1.3.8",
+    "bootstrap": "~3.3.1"
+  }
+}
