@@ -5,6 +5,7 @@
 			function link(scope, element, attrs, ngModel) {
 
 				var input = angular.element('<input type="file">');
+				var errors = 0;
 
 				if(scope.options.multiple) {
 					input.attr('multiple', 'true');
@@ -44,6 +45,7 @@
 				scope.$watch('files', function(newv, oldv) {
 					var uploaded = 0;
 					var size = 0;
+					errors = 0;
 
 					angular.forEach(newv, function(v, k) {
 
@@ -81,13 +83,11 @@
 						ngModel.$setValidity('totalsize', true);
 					}
 
-					if(attrs.required && uploaded == 0) {
+					if(attrs.required && uploaded == 0 && errors == 0) {
 						_error('required', newv);
 					} else {
 						ngModel.$setValidity('required', true);
 					}
-
-					console.log(attrs.required);
 				}, true);
 
 				scope.$on('s3uploader:start', function() {
@@ -147,6 +147,7 @@
 					if(angular.isObject(file)) {
 						file.error = true;
 					}
+					errors++;
 				}
 			}
 

@@ -1,6 +1,6 @@
 # Angular AWS S3 Uploader
 
-It is hard to setup a demo for AWS S3 upload. First it will trash my bucket and I have to support Web server which gives you policies. So I created small demo video.
+It is hard to setup a demo for AWS S3 upload. First it will trash my bucket and I have to support Web server which gives you policies. So I created small [demo video](http://youtu.be/vqAgCY1XE8o).
 
 ### Why?
 
