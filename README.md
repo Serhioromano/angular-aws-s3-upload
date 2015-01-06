@@ -39,7 +39,11 @@ That is it. You are good to start create your interface.
 
 ### Concept
 
-This module created such away that you fully control how your uploader looks. It is rather small framework with AWS s3 tools rather than ready to use component. Ready to use components are nice until you what to change something. Change something is not a problem but as soon as you want to update that component you get the problems. With **Angular AWS S3 Uploader** you will not have those problems. You will be able safely update and keep your wonderful custom uploader UI.
+This module created such a away that you fully control how your uploader looks. It is rather small framework with AWS s3 tools than ready to use component.
+
+Ready to use components are nice until you what to change something. Directive templates become a real pain for me. yes I can always change template and template path, but I could not find a directive where I can do that and still safely update module without loosing changes.
+
+This is not the case in **Angular AWS S3 Uploader**. It not only have no template file, it does not have even template parameter. It means that HTML elements, their classes and positions are fully up to you. This directive is a helper and you are the UI master.
 
 ### Configuring
 
@@ -51,11 +55,17 @@ The main component of this uploader is a button.
 </button>
 ```
 
-Cool thing that it gives you full control how you style it. If you use bootstrap, ok, if not then that is also ok. 
+You see, you can use button or link or anything else. You set label and classes.
 
-First is `s3` directive with makes all the magic. Then `name` attribute if you want use `ngMessages`. `required` attribute also for using with `ngMessages`. You all know `ng-model` right? And options are described later.
+- First is `s3` directive with makes all the magic.
+- Then `name` attribute if you want use `ngMessages`.
+- `required` attribute is also for using with `ngMessages`.
+- You all know `ng-model` right?
+- And `options` are described later.
 
-Now you have to add interface as you like. You can list `form.files` in a table below, or just show confirmation alert. One important thing to know is `upload` button. If your component is not for immediate upload, then you can place another button.
+Now you have to add interface as you like. If you use multiple upload you can list `form.files` with `ng-repeat` in a table below, or just show confirmation alert. Thanks to Angular 2 way binding, what ever is added to `form.files` will be available outside directive.
+
+One important thing to know is `upload` button. If your component is not for immediate upload, then you can place another button.
 
 ```html
 <button class="pull-right btn btn-primary" s3-upload="form.files" ng-disabled="start_upload_state">
@@ -83,7 +93,7 @@ or use scope
 Here is the list of all options.
 
 Options | Type | Description
----|---
+---|---|---
 multiple | boolean | Allow multiple select files in file dialog.
 extensions | array | Allowed extensions `['png', 'jpg', 'mp4']`.
 immediate | boolean | Start upload immediately or when user click upload button.

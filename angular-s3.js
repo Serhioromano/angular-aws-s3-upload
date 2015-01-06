@@ -47,6 +47,8 @@
 					var size = 0;
 					errors = 0;
 
+					ngModel.$setValidity('upload', true);
+
 					angular.forEach(newv, function(v, k) {
 
 						v.error = false;
