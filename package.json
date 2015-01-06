@@ -17,6 +17,9 @@
   },
   "homepage": "https://github.com/Serhioromano/angular-aws-s3-upload",
   "devDependencies": {
-    "aws-sdk": "^2.1.4"
+    "aws-sdk": "^2.1.4",
+    "gulp": "^3.8.10",
+    "gulp-rename": "^1.2.0",
+    "gulp-uglify": "^1.0.2"
   }
 }
