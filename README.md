@@ -187,7 +187,7 @@ Now as you know the names, you can handle errors 3 different ways.
 
 Of course you have to include `ngMessages` module to your file and add dependency. ngMessages is not included in AngularJS and shipped separately.
 
-First you have to add `name` attribute to the same element where you added `s3` directive. Let's assume you have form name `testForm` and uploader name `uploads`, then you may sendup with something like this.
+First you have to add `name` attribute to the same element where you added `s3` directive. Let's assume you have form name `testForm` and uploader name `uploads`, then you might end up with something like this.
 
 ```html
 <div ng-messages="testForm.uploads.$error">
@@ -205,7 +205,7 @@ First you have to add `name` attribute to the same element where you added `s3` 
 
 #### Callbacks
 
-When in options you may set callbacks. the name of the callback is `on_` and name of the error.
+You may set callbacks in `options`. The name of the callback is `on_` and then name of the error.
 
 ```js
 $scope.options = {
@@ -217,7 +217,7 @@ There is one general callback for all errors `on_error` if you what to have one 
 
 #### Events
 
-S3 uploader will `$emmit` error events. The event name is `s3uploader:error:` and name. So in your code.
+S3 uploader will `$emmit` error events. The event name is `s3uploader:error:` and then name. So in your code.
 
 ```js
 $scope.$on('s3uploader:error:filesize', function(e, file){})
