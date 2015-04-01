@@ -22,10 +22,10 @@
 					var files = event.target.files;
 
 					angular.forEach(files, function(v, k) {
-
-						scope.files.push(v);
+                        scope.files.push(v);
 					});
 					scope.$apply();
+                    event.target.value = '';
 
 					if(scope.options.immediate) {
 						scope.upload();
@@ -226,7 +226,7 @@
 				function uploadComplete(e) {
 					var xhr = e.srcElement || e.target;
 					if(xhr.status === 204) {
-						file.real = 'https://' + scope.options.bucket + '.s3.amazonaws.com/' + key;
+						file.real = 'http://' + scope.options.bucket + '.s3.amazonaws.com/' + key;
 						stop(true);
 					} else {
 						stop(false);
