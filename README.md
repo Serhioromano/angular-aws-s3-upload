@@ -199,7 +199,7 @@ First you have to add `name` attribute to the same element where you added `s3` 
 	<div ng-message="policy_content" class="alert-danger alert">URL provides not a policy.</div>
 	<div ng-message="policy_get" class="alert-danger alert">Cannot get policy over URL provided.</div>
 	<div ng-message="policy_set" class="alert-danger alert">No policy parameter found.</div>
-	<div ng-message="upload" class="alert-danger alert">Something happened during uplaod.</div>
+	<div ng-message="upload" class="alert-danger alert">Something happened during upload.</div>
 </div>
 ```
 

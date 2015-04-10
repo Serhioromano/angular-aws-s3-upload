@@ -1,7 +1,7 @@
 (!function() {
 	angular.module('angular.aws.s3', []).
 
-		directive('s3', function(S3UploaderSrv, $timeout) {
+		directive('s3', function(S3UploaderSrv, $timeout, $http) {
 			function link(scope, element, attrs, ngModel) {
 
 				var input = angular.element('<input type="file">');
@@ -22,10 +22,10 @@
 					var files = event.target.files;
 
 					angular.forEach(files, function(v, k) {
-
-						scope.files.push(v);
+                        scope.files.push(v);
 					});
 					scope.$apply();
+                    event.target.value = '';
 
 					if(scope.options.immediate) {
 						scope.upload();
@@ -42,7 +42,7 @@
 				};
 
 				// Validation
-				scope.$watch('files', function(newv, oldv) {
+				scope.$watchCollection('files', function(newv, oldv) {
 					var uploaded = 0;
 					var size = 0;
 					errors = 0;
@@ -50,7 +50,6 @@
 					ngModel.$setValidity('upload', true);
 
 					angular.forEach(newv, function(v, k) {
-
 						v.error = false;
 
 						ngModel.$setValidity('extension', true);
@@ -66,7 +65,7 @@
 							_error('filesize', v);
 						}
 
-						if(v.success === true) {
+						if(v.error !== true) {
 							uploaded++;
 						}
 						size += v.size;
@@ -90,7 +89,7 @@
 					} else {
 						ngModel.$setValidity('required', true);
 					}
-				}, true);
+				});
 
 				scope.$on('s3uploader:start', function() {
 					scope.upload();
@@ -123,7 +122,7 @@
 
 				function _upload() {
 					angular.forEach(scope.files, function(v, k) {
-						if(!v.lastModified || v.error) {
+						if((!v.lastModified && !v.lastModifiedDate) || v.error) {
 							return;
 						}
 						S3UploaderSrv.process(v, k, scope, ngModel).then(function(file) {
@@ -166,7 +165,6 @@
 		factory('S3UploaderSrv', function($q, $timeout) {
 			function process(file, $index, scope, ngModel) {
 				var defer = $q.defer();
-
 				var ext = file.name.split('.').pop().toLowerCase();
 				var key = scope.options.folder || '';
 				if(scope.options.filename) {
@@ -190,7 +188,7 @@
 				xhr.addEventListener("error", uploadFailed, false);
 				xhr.addEventListener("abort", uploadCanceled, false);
 
-				xhr.open('POST', 'https://' + scope.options.bucket + '.s3.amazonaws.com/', true);
+				xhr.open('POST', 'http://' + scope.options.bucket + '.s3.amazonaws.com/', true);
 				xhr.send(fd);
 
 				file.upload = true;
@@ -228,7 +226,7 @@
 				function uploadComplete(e) {
 					var xhr = e.srcElement || e.target;
 					if(xhr.status === 204) {
-						file.real = 'https://' + scope.options.bucket + '.s3.amazonaws.com/' + key;
+						file.real = 'http://' + scope.options.bucket + '.s3.amazonaws.com/' + key;
 						stop(true);
 					} else {
 						stop(false);
