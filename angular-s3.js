@@ -1,7 +1,7 @@
 (!function() {
 	angular.module('angular.aws.s3', []).
 
-		directive('s3', function(S3UploaderSrv, $timeout, $http) {
+		directive('s3', ['S3UploaderSrv', '$timeout', '$http', function(S3UploaderSrv, $timeout, $http) {
 			function link(scope, element, attrs, ngModel) {
 
 				var input = angular.element('<input type="file">');
@@ -22,10 +22,10 @@
 					var files = event.target.files;
 
 					angular.forEach(files, function(v, k) {
-                        scope.files.push(v);
+						scope.files.push(v);
 					});
 					scope.$apply();
-                    event.target.value = '';
+					event.target.value = '';
 
 					if(scope.options.immediate) {
 						scope.upload();
@@ -160,9 +160,9 @@
 					options: '='
 				}
 			}
-		}).
+		}]).
 
-		factory('S3UploaderSrv', function($q, $timeout) {
+		factory('S3UploaderSrv', ['$q', '$timeout', function($q, $timeout) {
 			function process(file, $index, scope, ngModel) {
 				var defer = $q.defer();
 				var ext = file.name.split('.').pop().toLowerCase();
@@ -272,9 +272,9 @@
 			return {
 				process: process
 			}
-		}).
+		}]).
 
-		directive('s3Upload', function() {
+		directive('s3Upload', [function() {
 			return {
 				restrict: 'EA',
 				scope:    {
@@ -298,9 +298,9 @@
 					}, true)
 				}
 			}
-		}).
+		}]).
 
-		filter('filesize', function() {
+		filter('filesize', [function() {
 			return function(bytes, precision) {
 				if(isNaN(parseFloat(bytes)) || !isFinite(bytes)) return '-';
 				if(typeof precision === 'undefined') precision = 1;
@@ -308,9 +308,9 @@
 					number = Math.floor(Math.log(bytes) / Math.log(1024));
 				return (bytes / Math.pow(1024, Math.floor(number))).toFixed(precision) + ' ' + units[number];
 			}
-		}).
+		}]).
 
-		filter('speedsize', function() {
+		filter('speedsize', [function() {
 			return function(bytes, precision) {
 				if(isNaN(parseFloat(bytes)) || !isFinite(bytes)) return '-';
 				if(typeof precision === 'undefined') precision = 1;
@@ -318,6 +318,6 @@
 					number = Math.floor(Math.log(bytes) / Math.log(1024));
 				return (bytes / Math.pow(1024, Math.floor(number))).toFixed(precision) + ' ' + units[number];
 			}
-		});
+		}]);
 
 }());
