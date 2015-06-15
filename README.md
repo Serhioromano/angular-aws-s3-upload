@@ -18,7 +18,7 @@ I did not find anything I really like. What I needed from such a module is.
 
 Install with bower.
 
-    bower install angular-aws-s3-uploader --save
+    bower install angular-aws-s3-upload --save
 
 Or download. All you need is only angular dependency
 
