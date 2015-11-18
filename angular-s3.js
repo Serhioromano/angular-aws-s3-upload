@@ -188,7 +188,7 @@
 				xhr.addEventListener("error", uploadFailed, false);
 				xhr.addEventListener("abort", uploadCanceled, false);
 
-				xhr.open('POST', 'http://' + scope.options.bucket + '.s3.amazonaws.com/', true);
+				xhr.open('POST', '//' + scope.options.bucket + '.s3.amazonaws.com/', true);
 				xhr.send(fd);
 
 				file.upload = true;
@@ -226,7 +226,7 @@
 				function uploadComplete(e) {
 					var xhr = e.srcElement || e.target;
 					if(xhr.status === 204) {
-						file.real = 'http://' + scope.options.bucket + '.s3.amazonaws.com/' + key;
+						file.real = window.location.protocol + '//' + scope.options.bucket + '.s3.amazonaws.com/' + key;
 						stop(true);
 					} else {
 						stop(false);
