@@ -3,7 +3,7 @@
 <head lang="en">
 	<meta charset="UTF-8">
 	<title>Upload Example</title>
-	<script type="text/javascript" src="aws-sdk-s3.js"></script>
+	<script type="text/javascript" src="node_modules/aws-sdk/dist/aws-sdk.js"></script>
 	<script type="text/javascript" src="bower_components/angular/angular.js"></script>
 	<script type="text/javascript" src="bower_components/angular-messages/angular-messages.js"></script>
 	<script type="text/javascript" src="angular-s3.js"></script>
@@ -157,11 +157,7 @@
 			totalsize:  '10000000',
 			region:     'us-east-1',
 			limit:      1,
-			policy:     {
-				"policy":    "eyJleHBpcmF0aW9uIjoiMjAxNi0wNS0xOFQxNjo0OToyNFoiLCJjb25kaXRpb25zIjpbeyJidWNrZXQiOiJwcml2YXRlLWNkbi1jaCJ9LFsic3RhcnRzLXdpdGgiLCIka2V5IiwiIl0seyJhY2wiOiJwdWJsaWMtcmVhZCJ9LFsiY29udGVudC1sZW5ndGgtcmFuZ2UiLDAsMTA0ODU3NjBdLFsic3RhcnRzLXdpdGgiLCIkQ29udGVudC1UeXBlIiwiIl1dfQ==",
-				"signature": "pzLtBoaue15H5s4jhU7voe7YaCQ=",
-				"key":       "AKIAIBUOK6TJJUEDWPBA"
-			}
+			policy:     {"policy":"eyJleHBpcmF0aW9uIjoiMjAxNy0wOS0wOVQwMzozNTozOVoiLCJjb25kaXRpb25zIjpbeyJidWNrZXQiOiJwcml2YXRlLWNkbi1jaCJ9LFsic3RhcnRzLXdpdGgiLCIka2V5IiwiIl0seyJhY2wiOiJwdWJsaWMtcmVhZCJ9LFsiY29udGVudC1sZW5ndGgtcmFuZ2UiLDAsMTA0ODU3NjBdLFsic3RhcnRzLXdpdGgiLCIkQ29udGVudC1UeXBlIiwiIl1dfQ==","signature":"CAsgQ1QdxnF\/qMhKYl7kCI+27lg=","key":"AKIAICAY5HY475TWHACA"}
 		};
 
 		$scope.delete2 = function(name) {

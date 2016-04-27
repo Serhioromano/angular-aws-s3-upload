@@ -5,9 +5,9 @@ echo $s3_policy->access_token();
 
 class S3policy
 {
-	private $bucket_name = 'bucket-name';
-	private $aws_access_key_id = '***************';
-	private $aws_secret_key = '****************************';
+	private $bucket_name = 'private-cdn-ch';
+	private $aws_access_key_id = '**';
+	private $aws_secret_key = '**';
 
 	public function __construct()
 	{
