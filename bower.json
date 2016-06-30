@@ -6,7 +6,7 @@
     "Serhioromano <serg4172@mail.ru>"
   ],
   "description": "AWS S3 uploader",
-  "main": "angular-s3.min.js",
+  "main": "angular-s3.js",
   "moduleType": [
     "globals"
   ],
