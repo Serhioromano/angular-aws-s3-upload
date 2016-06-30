@@ -97,6 +97,9 @@
 
 				scope.upload = function() {
 					scope.start_upload_state = true;
+					if(angular.isFunction(scope.options.on_upload_state_change)) {
+						scope.options.on_upload_state_change(true);
+					}
 
 					ngModel.$setValidity('policy_content', true);
 					ngModel.$setValidity('policy_get', true);
@@ -255,13 +258,15 @@
 							delete file.lastModified;
 
 							scope.start_upload_state = false;
+							if(angular.isFunction(scope.options.on_upload_state_change)) {
+								scope.options.on_upload_state_change(false);
+							}
 
 							if(success) {
 								defer.resolve(file);
 							} else {
 								defer.reject(xhr);
 							}
-							scope.start_upload_state = false;
 						});
 					}, 0);
 				}

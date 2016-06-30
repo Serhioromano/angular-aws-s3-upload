@@ -106,6 +106,7 @@ totalsize | num | Number in bytes maximum allowed size for list of files.
 region | string | AWS S3 region: 'us-east-1'.
 limit | num | Number of files to uplaod. 0 is unlimited.
 on_success | function | callback on success file upload.
+on_upload_state_change | function | Callback passed `true` when uploading starts and `false` when it stops.
 replace | boolean | Only works with `limit` set to 1. In this case on new selection it will simply override existing file.
 policy | object | AWS policy object. Explained later.
 policyUrl | string | URL to get policy object.
