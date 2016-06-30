@@ -177,7 +177,7 @@ Error | Description
 `filesize` | When one of the files exceed size per file option
 `policy_content` | When we get policy from url but it is not an object
 `policy_get` | Error accessing policy URL
-`policy_set` | There is no pillory parameter at all
+`policy_set` | There is no policy parameter at all
 `upload` | Some error during upload. Usually S3 access error will sendup here
 
 
