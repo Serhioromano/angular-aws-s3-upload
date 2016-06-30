@@ -175,12 +175,15 @@
 
 				var fd = new FormData();
 				fd.append('key', key);
-				fd.append('acl', scope.options.acl || 'public-read');
 				fd.append('Content-Type', file.type);
 				fd.append('AWSAccessKeyId', scope.options.policy.key);
 				fd.append('policy', scope.options.policy.policy);
 				fd.append('signature', scope.options.policy.signature);
 				fd.append("file", file);
+
+				if (scope.options.acl) {
+					fd.append('acl', scope.options.acl);
+				}
 
 				var xhr = new XMLHttpRequest();
 				xhr.upload.addEventListener("progress", uploadProgress, false);
