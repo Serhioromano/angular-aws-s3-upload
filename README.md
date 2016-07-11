@@ -137,7 +137,32 @@ I also include `policy.php` file in the project as example how to generate a pol
 
 #### AWS Config
 
-Another important thing is to configure your S3 bucket permissions. You have to enable CORS on your bucket. here is how you can do that.
+Another important thing is to configure your S3 bucket permissions. At a
+minimum the `s3:PutObject` is required. If you use the `acl` option,
+`s3:PutObjectAcl` is also required. Example policy:
+
+```json
+{
+  "Version": "2008-10-17",
+  "Id": "PolicyForAngularAwsS3Upload",
+  "Statement": [
+    {
+      "Sid": "1",
+      "Effect": "Allow",
+      "Principal": {
+        "AWS": "arn:aws:iam::[id]:user/[username]"
+      },
+      "Action": [
+        "s3:PutObject",
+        "s3:PutObjectAcl"
+      ],
+      "Resource": "arn:aws:s3:::[bucket]/*"
+    }
+  ]
+}
+```
+
+Secondly, you have to enable CORS on your bucket. Here is how you can do that.
 
 http://docs.aws.amazon.com/AmazonS3/latest/dev/cors.html
 
