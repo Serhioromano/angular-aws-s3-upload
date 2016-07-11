@@ -99,7 +99,7 @@ extensions | array | Allowed extensions `['png', 'jpg', 'mp4']`.
 immediate | boolean | Start upload immediately or when user click upload button.
 bucket | string | Name of S3 bucket.
 acl |  string | What acl rules apply to file after upload. Eg: 'public-read'.
-folder | string | Directory in the bucket where file have to be saved.
+folder | string | Directory in the bucket where file have to be saved. Should end with a trailing slash `/`.
 filename | string | Override file name. This option is useful only if you have single file upload. For example user upload avatar and you upload it to `/avatars/[USR_ID]/avatar.png`. So it is always the same name and this way you always know path to user avatar. It also helps to avoid file management. If user change avatar you do not eed to think to remove old one. Because it will simply override.
 filesize | num | Number in bytes maximum allowed size per user.
 totalsize | num | Number in bytes maximum allowed size for list of files.
