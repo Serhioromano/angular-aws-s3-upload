@@ -24,7 +24,7 @@ Or download. All you need is only angular dependency
 
 ```js
 <script type="text/javascript" src="bower_components/angular/angular.js"></script>
-<script type="text/javascript" src="bower_components/angular-aws-s3-uploader/angular-s3.js"></script>
+<script type="text/javascript" src="bower_components/angular-aws-s3-upload/angular-s3.js"></script>
 ```
 
 If you want to use `ngMessages` with this element you have to add this to your project.
