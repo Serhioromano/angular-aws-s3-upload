@@ -97,9 +97,6 @@
 
 				scope.upload = function() {
 					scope.start_upload_state = true;
-					if(angular.isFunction(scope.options.on_upload_state_change)) {
-						scope.options.on_upload_state_change(true);
-					}
 
 					ngModel.$setValidity('policy_content', true);
 					ngModel.$setValidity('policy_get', true);
@@ -127,6 +124,9 @@
 					angular.forEach(scope.files, function(v, k) {
 						if((!v.lastModified && !v.lastModifiedDate) || v.error) {
 							return;
+						}
+						if(angular.isFunction(scope.options.on_upload_state_change)) {
+							scope.options.on_upload_state_change(true);
 						}
 						S3UploaderSrv.process(v, k, scope, ngModel).then(function(file) {
 							if(angular.isFunction(scope.options.on_success)) {
